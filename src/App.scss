@@ -1,0 +1,16 @@
+.App{
+
+    .settings__btn{
+        position: fixed;
+        right: 16px;
+        bottom: 16px;
+        z-index: 100000;
+
+        button{
+            color: #fff;
+            padding: 10px;
+            background-color: blue;
+            border-radius: 50%;
+        }
+    }
+}
