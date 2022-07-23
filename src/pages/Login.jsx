@@ -2,9 +2,15 @@ import React, {useEffect, useRef, useState} from 'react'
 import Button from '../components/Button'
 import { Link } from 'react-router-dom'
 import { AiFillFacebook } from 'react-icons/ai'
+import { useDispatch } from 'react-redux'
+import { setUser } from '../store/auth'
+import { useNavigate, useLocation } from 'react-router-dom'
 import './Login.scss'
 
 function Login() {
+    const location = useLocation()
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
     const ref = useRef()
     const [ username, setUserName ] = useState('')
     const [ password, setPassword ] = useState('')
@@ -14,18 +20,13 @@ function Login() {
         let images = ref.current.querySelectorAll('img'),
         total = images.length,
         current = 0
+        
         const imageSlider = () => {
-            if(current > 0) {
-                images[current - 1].classList.add('opacity')
-            }else{
-                images[total - 1].classList.add('opacity')
-            }
+
+            images[(current > 0 ? current : total) - 1].classList.add('opacity')
             images[current].classList.remove('opacity')
-            if(current === total - 1) {
-                current = 0
-            } else{
-                current += 1
-            }
+            current = current === total - 1 ? 0 : current + 1 
+
         }
         imageSlider()
         let interval = setInterval(imageSlider, 3000)
@@ -36,6 +37,10 @@ function Login() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        dispatch(setUser({
+            username
+        }))
+        navigate(location.state?.return_url || '/', {replace: true})
     }
 
   return (
@@ -75,7 +80,7 @@ function Login() {
                    }
                 </div>
                 
-                <Button disabled={!password || !username} classname='formBtn'>
+                <Button type='submit' disabled={!password || !username} classname='formBtn'>
                     Giriş Yap
                 </Button>
 

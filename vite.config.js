@@ -11,7 +11,8 @@ export default defineConfig({
         @import "./src/variables.scss";
         `,
       }
-    }
+    },
+    
   }
 
 
