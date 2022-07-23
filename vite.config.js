@@ -8,17 +8,12 @@ export default defineConfig({
     preprocessorOptions: {
       scss: {
         additionalData: `
-        @import "variables.scss";
+        @import "./src/variables.scss";
         `,
       }
     }
-  },
+  }
 
-  resolve: {
-    alias: {
-      '@': (__dirname, './src'),
-    },
-  },
 
 
 
