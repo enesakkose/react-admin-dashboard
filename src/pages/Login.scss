@@ -95,16 +95,15 @@
             }
             
             &__password{
-                display: flex;
-                border: 1px solid rgba($gray, .4);
-                border-radius: 3px;
-                
-                &:focus-within{
-                    border-color: $gray;
-                }
-
-                &__input{
+                label{
+                    display: flex;
+                    border: 1px solid rgba($gray, .4);
+                    border-radius: 3px;
                     flex: 1;
+
+                    &:focus-within{
+                        border-color: $gray;
+                    }
                 }
 
                 .btn{
