@@ -2,15 +2,13 @@ import React, {useEffect, useRef, useState} from 'react'
 import Button from '../components/Button'
 import { Link } from 'react-router-dom'
 import { AiFillFacebook } from 'react-icons/ai'
-import { useDispatch } from 'react-redux'
-import { setUser } from '../store/auth'
 import { useNavigate, useLocation } from 'react-router-dom'
+import { login } from '../firebase'
 import './Login.scss'
 
 function Login() {
     const location = useLocation()
     const navigate = useNavigate()
-    const dispatch = useDispatch()
     const ref = useRef()
     const [ username, setUserName ] = useState('')
     const [ password, setPassword ] = useState('')
@@ -35,12 +33,12 @@ function Login() {
         }
     }, [ref])
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault()
-        dispatch(setUser({
-            username
-        }))
+        await login(username,password)
         navigate(location.state?.return_url || '/', {replace: true})
+        
+        
     }
 
   return (
@@ -73,9 +71,9 @@ function Login() {
                 </label>
                    {password && 
                    <div className="btn">
-                        <button onClick={() => setShow(!show)}>
+                        <button type='button' onClick={() => setShow(!show)}>
                         {show ? 'Gizle' : 'Göster'}
-                    </button>
+                        </button>
                    </div>
                    }
                 </div>

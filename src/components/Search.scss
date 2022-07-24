@@ -1,0 +1,12 @@
+.header__container__search{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: $PM;
+    background-color: rgba($gray, .2);
+    
+
+    input{
+        background-color: transparent;
+    }
+}
