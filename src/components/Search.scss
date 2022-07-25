@@ -1,12 +1,45 @@
 .header__container__search{
     display: flex;
     align-items: center;
-    gap: 5px;
-    padding: $PM;
-    background-color: rgba($gray, .2);
-    
+    gap: 8px;
+    padding: $PM $PL;
+    background-color: rgba($gray, .1);
+    width: 268px;
+    border-radius: 6px;
 
+    .close-icon{
+        color: $gray;
+        display: none;
+        width: 16px;
+        height: 16px;
+    }
+
+    .search-icon{
+        pointer-events: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &:focus-within{
+        .search-icon{
+            display: none;
+        }
+        
+        .close-icon{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+    
     input{
         background-color: transparent;
+        flex: 1;
+        
+        &::placeholder{
+            font-size: $fontMm;
+            
+        }
     }
 }
