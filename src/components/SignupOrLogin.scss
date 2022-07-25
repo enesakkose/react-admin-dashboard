@@ -1,0 +1,18 @@
+.signupOrLogin{
+    width: 350px;
+    border: 1px solid $darkWhite;
+    background-color: $white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $gray;
+    font-size: $fontMm;
+    padding: $P25;
+    margin-top: $MM;
+
+    a{
+        color: $blue;
+        font-weight: 600;
+        margin-left: $MS;
+    }
+}

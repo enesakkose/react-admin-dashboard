@@ -24,8 +24,8 @@ onAuthStateChanged( auth, user => {
 
 export const login =  async(email, password) => {
     try {
-        const response = await signInWithEmailAndPassword(auth,email,password)
-        console.log(response.user)
+        return await signInWithEmailAndPassword(auth,email,password)
+        
     } catch (error) {
         toast.error(error.message)
     }

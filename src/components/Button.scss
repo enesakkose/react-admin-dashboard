@@ -1,4 +1,12 @@
 button{
     border-radius: 5px;
     font-weight: 600;
+    background-color: $blue;
+    padding: $PM;
+    color: $white;
+    cursor: pointer;
+
+    &:disabled{
+        opacity: .5;
+    }
 }

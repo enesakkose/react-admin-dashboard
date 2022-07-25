@@ -1,16 +1,34 @@
 import React, { useEffect, useState } from 'react'
 import { useField } from 'formik'
-function Input({children, type = 'text', ...props}) {
+import './Input.scss'
+function Input({children, type = 'text', valuesPassword, ...props}) {
 
     const [field, meta, helpers] = useField(props)
+    const [ show, setShow ] = useState(false)
+    const [ inputType, setInputType ] = useState(type)
+
+    useEffect(() => {
+      if(show){
+        setInputType('text')
+      }else if (type === 'password'){
+        setInputType('password')
+      }
+
+    }, [show])
 
 
 
   return (
     <>
-        <label className={type === 'password' && 'login__form__inputs__password__input'}>
-            <input  type={type} {...field} {...props}/>
+        <label>
+            <input  type={inputType}  {...field} {...props}/>
             {children}
+            {valuesPassword && 
+                  <div className="btn">
+                    <button type='button' onClick={() => setShow(!show)}>{show ? 'Gizle' : 'Göster'}
+                    </button>    
+                  </div>
+            }
         </label>
 
     </>

@@ -26,17 +26,18 @@ body{
   height: 100vh;
 }
 
-button{
-  cursor: pointer;
-  background: transparent;
-}
-
 a{
   color: $gray;
 }
 
 span{
   font-size: 14px;
+}
+
+h6{
+  font-size: $fontM;
+  font-weight: 400;
+  text-align: center;
 }
 
 .container{

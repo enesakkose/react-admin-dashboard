@@ -1,0 +1,52 @@
+.signup{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+
+    &__form{
+        width: 350px;
+        background-color: $white;
+        padding: $PXXXL $PXXL $PXXL;
+        border: 1px solid $darkWhite;
+        color: $gray;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+
+        &__title{
+            text-align: center;
+
+        }
+
+        &__logo{
+            display: flex;
+            justify-content: center;
+        }
+
+        &__facebook__logo{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        &__inputs{
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+
+            &__bottom{
+                margin: $MM 0;
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+
+                h6{
+                    line-height: 1.4;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,24 @@
+.form__or{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: $fontM;
+    color: $gray;
+
+    &__before{
+        flex: 1;
+        height: 1px;
+        background-color: rgba($gray, .4);
+    }
+
+    &__text{
+        padding: $PM $PL;
+    }
+
+    &__after{
+        flex: 1;
+        height: 1px;
+        background-color: rgba($gray, .4);
+    }
+    
+}
