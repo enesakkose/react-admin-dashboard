@@ -4,17 +4,33 @@ import { AiFillFacebook } from 'react-icons/ai'
 import Or from '../components/Or'
 import { Formik , Form } from 'formik'
 import Input from '../components/Input'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import SignupOrLogin from '../components/SignupOrLogin'
-import './Signup.scss'
 import Download from '../components/Download'
+import { SignupSchema } from '../validation'
+import { signup } from '../firebase'
+import { Navigate } from 'react-router-dom'
+import './Signup.scss'
+
 
 
 function Signup() {
+    const navigate = useNavigate()
+    const handleSubmit = async(values, actions) => {
+        const response = await signup(values)
+        
+        if(response) {
+            navigate(location.state?.return_url || '/', {replace: true})  
+        }
+
+          
+    }
+
+
   return (
     <div className='signup'>
         <div className="signup__form">
-        <div className='signup__form__logo'>
+            <div className='signup__form__logo'>
                 <img src="https://www.instagram.com/static/images/web/logged_out_wordmark.png/7a252de00b20.png" alt="" />
             </div>
 
@@ -28,20 +44,22 @@ function Signup() {
             <Or/>
 
             <Formik
+                validationSchema={SignupSchema}
                 initialValues={{
                     telOrMail: '',
-                    name: '',
+                    fullName: '',
                     username: '',
                     password: ''
                 }}
+                onSubmit={handleSubmit}
             >
-                {({isSubmitting, values}) => (
+                {({isSubmitting, isValid, dirty, values}) => (
                     <Form className='signup__form__inputs'>
                         <Input name='telOrMail' className={values.telOrMail && 'activeInput'}>
                             <small className={values.telOrMail && 'active'} >Cep Telefonu Numarası veya e-posta</small>
                         </Input>
-                        <Input name='name' className={values.name && 'activeInput'}>
-                            <small className={values.name && 'active'} >Adı Soyadı</small>
+                        <Input name='fullName' className={values.fullName && 'activeInput'}>
+                            <small className={values.fullName && 'active'} >Adı Soyadı</small>
                         </Input>
                         <Input name='username' className={values.username && 'activeInput'}>
                             <small className={values.username && 'active'} >Kullanıcı Adı</small>
@@ -60,7 +78,7 @@ function Signup() {
                             By signing up, you agree to our Terms , Privacy Policy and Cookies Policy .
                             </h6>
                         </div>
-                        <Button type='submit' disabled={!values.password || !values.username || !values.name || !values.telOrMail || isSubmitting}>Kaydol</Button>
+                        <Button type='submit' disabled={!isValid || !dirty || isSubmitting}>Kaydol</Button>
                     </Form>
                 )}
             </Formik>
@@ -68,10 +86,12 @@ function Signup() {
         <SignupOrLogin>
                 Hesabın var mı?<Link to='/auth/login'>Giriş Yap</Link>
         </SignupOrLogin>
-        
+
         <Download/>
     </div>
   )
 }
 
 export default Signup
+
+// todo register schema to be created with formik

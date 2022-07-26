@@ -1,6 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth, signOut, onAuthStateChanged, signInWithEmailAndPassword } from 'firebase/auth'
+import { getAuth, signOut, onAuthStateChanged, signInWithEmailAndPassword ,createUserWithEmailAndPassword, updateProfile} from 'firebase/auth'
+import {getFirestore, doc , getDoc, setDoc } from 'firebase/firestore'
 import toast from 'react-hot-toast'
 import { userHandle } from "../utils";
 
@@ -17,9 +18,24 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth()
+const db = getFirestore(app)
 
-onAuthStateChanged( auth, user => {
-    userHandle(user || false)
+onAuthStateChanged( auth, async (user) => {
+    if(user) {
+        const dbUser = await getDoc(doc(db, 'users', user.uid))
+        let data = {
+            uid: user.uid,
+            fullName: user.fullName,
+            email: user.email,
+            emailVerified: user.emailVerified,
+            ...dbUser.data()
+        }
+
+
+        userHandle(data)
+    }else{
+        userHandle(false)
+    }
 })
 
 export const login =  async(email, password) => {
@@ -34,6 +50,45 @@ export const login =  async(email, password) => {
 export const logout = async() => {
     try {
         await signOut(auth)
+    } catch (error) {
+        toast.error(error.code)
+    }
+}
+
+export const signup = async({ fullName, telOrMail, username, password}) => {
+    try {
+        
+        const user = await getDoc(doc(db, 'usernames', username))
+
+        if(user.exists()){
+            toast.error(`${username} already exist`)
+        }else{
+
+        const response = await createUserWithEmailAndPassword(auth, telOrMail, password)
+
+        await setDoc(doc(db, 'usernames',username),{
+            user_id: response.user.uid
+        })
+
+            
+
+        await setDoc(doc(db, "users", response.user.uid), {
+            fullName,
+            username,
+            followers: [],
+            following: [],
+            notifications: []
+          })
+
+
+        await updateProfile(auth.currentUser, {
+            displayName: fullName
+        })
+
+        return response.user
+
+        }
+        
     } catch (error) {
         toast.error(error.code)
     }
