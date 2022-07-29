@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { useParams, useNavigate, NavLink,Link, Outlet } from 'react-router-dom'
+import { useParams, useNavigate, NavLink, Outlet } from 'react-router-dom'
 import { getUserInfo } from '../../firebase'
 import Icon from '../../components/Icon'
-import ProfileHeader from './ProfileHeader'
-import './ProfileLayout.scss'
+import ProfileHeader from './components/ProfileHeader'
+import { Helmet } from 'react-helmet'
 import ProfileNotFound from './ProfileNotFound'
+import './ProfileLayout.scss'
 
 function ProfileLayout() {
     const { username } = useParams()
@@ -25,7 +26,15 @@ function ProfileLayout() {
       }, [])
 
   if( user === false ) {
-    return <ProfileNotFound/>
+    return(
+      <>
+      <Helmet>
+        <title>Page not found</title>
+      </Helmet>
+      <ProfileNotFound/>
+      </>
+
+    ) 
   }
 
   if( user === null) {
@@ -37,7 +46,11 @@ function ProfileLayout() {
   }
 
   return user &&(
-    ( 
+    (
+    <>
+    <Helmet>
+      <title>{user.fullName} (@{user.username}) • Instagram photograph and videos</title>
+    </Helmet>
     <div className='profile'>
         <ProfileHeader user={user}/>
         <nav className="profile__post">
@@ -52,6 +65,7 @@ function ProfileLayout() {
         </nav>
         <Outlet/>
     </div>
+    </>
     )
   )
 }

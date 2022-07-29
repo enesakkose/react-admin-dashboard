@@ -1,5 +1,5 @@
 import React from 'react'
-import None from './None'
+import None from './components/None'
 import './ProfileTags.scss'
 
 function ProfileTags() {

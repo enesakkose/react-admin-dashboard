@@ -7,10 +7,12 @@ import { useNavigate, useLocation } from 'react-router-dom'
 import { login } from '../firebase'
 import { Formik, Form } from 'formik'
 import { LoginSchema } from '../validation'
-import './Login.scss'
+import { Helmet } from 'react-helmet'
 import Or from '../components/Or'
 import Download from '../components/Download'
 import SignupOrLogin from '../components/SignupOrLogin'
+import './Login.scss'
+
 
 function Login() {
     const location = useLocation()
@@ -57,6 +59,9 @@ function Login() {
 
   return (
     <main className='login'>
+        <Helmet>
+            <title>Login • Instagram</title>
+        </Helmet>
         <div className="login__img">
             <div className="login__img__onPhone" ref={ref}>
                 {images.map((image,key) => (

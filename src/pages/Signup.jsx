@@ -21,14 +21,15 @@ function Signup() {
         
         if(response) {
             navigate(location.state?.return_url || '/', {replace: true})  
-        }
-
-          
+        } 
     }
 
 
   return (
     <div className='signup'>
+        <Helmet>
+            <title>Register • Instagram</title>
+        </Helmet>
         <div className="signup__form">
             <div className='signup__form__logo'>
                 <img src="https://www.instagram.com/static/images/web/logged_out_wordmark.png/7a252de00b20.png" alt="" />
