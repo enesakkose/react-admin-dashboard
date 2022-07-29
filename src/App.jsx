@@ -14,6 +14,8 @@ import Signup from './pages/Signup'
 import Layout from './pages/Layout'
 import Home from './pages/Home'
 import './App.scss'
+import InboxLayout from './pages/Inbox/InboxLayout'
+import Inbox from './pages/Inbox/Inbox'
 
 
 const routes = [
@@ -37,6 +39,16 @@ const routes = [
             {
               path: 'tagged',
               element: <ProfileTags/>
+            }
+          ]
+        },
+        {
+          path: 'inbox',
+          element: <InboxLayout/>,
+          children: [
+            {
+              index: true,
+              element: <Inbox/>
             }
           ]
         }

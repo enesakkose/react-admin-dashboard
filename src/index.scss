@@ -40,7 +40,14 @@ h6{
   text-align: center;
 }
 
+#root{
+  display: flex;
+  flex-direction: column;
+}
+
 .container{
-  max-width: 935px;
+  width: 935px;
   margin: 0 auto;
+  max-width: 100%;
+  flex: 1;
 }

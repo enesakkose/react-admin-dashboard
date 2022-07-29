@@ -1,0 +1,8 @@
+.inboxLayout{
+    border: 1px solid $gray;
+    height: calc(100vh - 100px);
+    background-color: $white;
+    border-radius: 3px;
+    display: grid;
+    grid-template-columns: 1fr 1.67fr;
+}

@@ -23,7 +23,7 @@ function Header() {
             <NavLink to='/'>
                 <Icon name='home' size='27'/>
             </NavLink>
-            <NavLink to='/'>
+            <NavLink to='/inbox'>
                 <Icon name='direct' size='27'/>
             </NavLink>
             <NavLink to='/'>
