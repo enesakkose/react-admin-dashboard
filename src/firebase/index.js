@@ -38,6 +38,18 @@ onAuthStateChanged( auth, async (user) => {
     }
 })
 
+export const getUserInfo = async(uname) => {
+    const username = await getDoc(doc(db, 'usernames', uname))
+
+    if(username.exists()){
+        return (await getDoc(doc(db, 'users', username.data().user_id))).data()
+        
+    }else{
+        toast.error('User not found!')
+        throw new Error('User not found!')
+    }
+}
+
 export const login =  async(email, password) => {
     try {
         return await signInWithEmailAndPassword(auth,email,password)
@@ -77,7 +89,12 @@ export const signup = async({ fullName, telOrMail, username, password}) => {
             username,
             followers: [],
             following: [],
-            notifications: []
+            notifications: [],
+            bio: '',
+            website: '',
+            phoneNumber: '',
+            gender: '',
+            posts: 0
           })
 
 

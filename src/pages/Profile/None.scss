@@ -1,0 +1,23 @@
+.none{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+    padding-top: $PXXL;
+    
+    &__icon{
+        width: 62px;
+        height: 62px;
+        border: 2px solid $black;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    h5{
+        font-size: $fontXL;
+        font-weight: 300;
+    }
+}

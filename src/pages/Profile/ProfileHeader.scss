@@ -1,0 +1,63 @@
+.profileHeader{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 40px;
+    padding-bottom: $PXXL;
+
+    &__photo{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img{
+          border-radius: 50%;
+          width: 150px;
+          height: 150px;
+        }
+        
+    }
+
+    &__info{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        &__title{
+            display: flex;
+            align-items: center;
+            gap: 30px;
+
+            h2{
+                font-weight: 300;
+            }
+
+            &__btn{
+                display: flex;
+                align-items: center;
+                gap: 12px;
+            }
+
+            .follow__btn{
+                padding: $PM $PXXL;
+            }
+
+            .threedot__btn{
+                background-color: transparent;
+            }
+        }
+
+        &__user{
+            display: flex;
+            align-items: center;
+            gap: 30px;
+
+            h3{
+                
+                span{
+                    font-weight: 400;
+                    font-size: $fontBasic;
+                }
+            }
+        }
+    }
+}

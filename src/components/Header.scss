@@ -13,5 +13,26 @@
                 height: 29px;
             }
         }
+
+        &__nav{
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            
+            a{
+                color: $black;
+            }
+
+            .profile__btn{
+                background-color: transparent;
+                padding: 0;
+                
+                img{
+                    width: 24px;
+                    height: 24px;
+                    border-radius: 50%;
+                }
+            }
+        }
     }
 }
