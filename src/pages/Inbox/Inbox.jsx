@@ -17,5 +17,3 @@ function Inbox() {
 }
 
 export default Inbox
-
-// todo inbox sidebar to be completed

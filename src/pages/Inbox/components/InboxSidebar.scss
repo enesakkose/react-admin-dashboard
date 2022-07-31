@@ -1,3 +1,31 @@
 .inboxSidebar{
     border-right: 1px solid rgba($gray,  .3);
+
+    &__header{
+        
+        &__title{
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid rgba($gray,  .3);
+            padding: $PM;
+            
+            button{
+                background-color: transparent;
+                color: $black;    
+            }
+
+            &__user{
+                display: flex;
+                justify-content: center;
+                flex: 1;
+
+                .inboxSelect-btn{
+                    display: flex;
+                    align-items: center;
+                    gap: 7px;
+                    font-size: $fontBasic;
+                }
+            }
+        }
+    }
 }
