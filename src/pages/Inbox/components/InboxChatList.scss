@@ -1,0 +1,67 @@
+.inboxChatList{
+    height: calc(100% - 60px);
+    overflow: auto;
+
+    &__header{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: $PL;
+
+        button{
+            background-color: transparent;
+            color: $blue;
+            padding: 0;
+            font-size: $fontMm;
+        }
+    }
+    .chat{
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: $PM $PL;
+        transition: 100ms background ease-in-out;
+
+        &:hover{
+            background-color: rgba($gray, .1);
+        }
+
+        img{
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+        }
+
+        &__info{
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            flex: 1;
+
+            h5{
+                color: $black;
+                font-size: $fontMm;
+            }
+            
+            p{
+                font-size: $fontMm;
+            }
+
+            .bold{
+                font-weight: 600;
+                color: $black;
+            }
+        }
+
+        &__unread{
+            width: 7px;
+            height: 7px;
+            background-color: $blue;
+            border-radius: 5px;
+        }
+    }
+
+    .chatActive{
+        background-color: rgba($gray, .1);
+    }
+}

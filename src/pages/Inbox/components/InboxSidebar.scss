@@ -1,8 +1,8 @@
 .inboxSidebar{
     border-right: 1px solid rgba($gray,  .3);
-
+    overflow: auto;
     &__header{
-        
+
         &__title{
             display: flex;
             align-items: center;
@@ -11,7 +11,8 @@
             
             button{
                 background-color: transparent;
-                color: $black;    
+                color: $black;
+                padding-bottom: $PS
             }
 
             &__user{
@@ -24,6 +25,10 @@
                     align-items: center;
                     gap: 7px;
                     font-size: $fontBasic;
+
+                    .rotate{
+                        transform: rotate(-180deg);
+                    }
                 }
             }
         }
