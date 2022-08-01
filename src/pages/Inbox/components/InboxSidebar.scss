@@ -1,8 +1,9 @@
 .inboxSidebar{
     border-right: 1px solid rgba($gray,  .3);
     overflow: auto;
-    &__header{
+    min-width: 350px;
 
+    &__header{
         &__title{
             display: flex;
             align-items: center;

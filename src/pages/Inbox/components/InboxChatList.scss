@@ -23,7 +23,7 @@
         transition: 100ms background ease-in-out;
 
         &:hover{
-            background-color: rgba($gray, .1);
+            background-color: rgba($gray, .08);
         }
 
         img{
@@ -62,6 +62,9 @@
     }
 
     .chatActive{
-        background-color: rgba($gray, .1);
+        background-color: rgba($gray, .2);
+        &:hover{
+            background-color: rgba($gray, .2);
+        }
     }
 }

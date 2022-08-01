@@ -4,8 +4,9 @@ import Search from './Search'
 import { logout } from '../firebase'
 import { useSelector } from 'react-redux'
 import Icon from './Icon'
-import Button from './Button'
+import classNames from 'classnames'
 import './Header.scss'
+
 
 function Header() {
 
@@ -21,10 +22,10 @@ function Header() {
             <Search/>
           <nav className="header__container__nav">
             <NavLink to='/'>
-                <Icon name='home' size='27'/>
+            {({isActive}) => <Icon name={isActive ?'home-filled' : 'home'} size='27'/>}
             </NavLink>
             <NavLink to='/inbox'>
-                <Icon name='direct' size='27'/>
+                {({isActive}) => <Icon name={isActive ? 'direct-filled' : 'direct'} size='27'/>}
             </NavLink>
             <NavLink to='/'>
                 <Icon name='new' size='27'/>
@@ -36,7 +37,7 @@ function Header() {
                 <Icon name='heart' size='27'/>
             </NavLink>
             <NavLink className='profile__btn' to={`/${user.username}`}>
-               <img src="../no-avatar.jpeg" alt="" />
+               {({isActive}) => <img className={classNames({'border' : isActive})} src="../no-avatar.jpeg" alt="" />}
             </NavLink>
           </nav>
         </div>

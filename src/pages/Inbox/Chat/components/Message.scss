@@ -1,0 +1,28 @@
+.message{
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    margin-bottom: $MM;
+
+    &__content{
+        display: inline-flex;
+        align-items: center;
+        padding:  $PM $PXL;
+        min-height: 44px;
+        border: 1px solid rgba($gray, .3);
+        border-radius: 35px;
+        max-width: 45%;
+        overflow-wrap: anywhere;
+        hyphens: auto;
+        
+    }
+
+    &__grayContent{
+        background-color: rgba($gray, .2);
+        border: 0;
+    }
+}
+
+.otherSideMessage{
+    justify-content: flex-end;
+}

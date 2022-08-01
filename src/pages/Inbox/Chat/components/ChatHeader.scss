@@ -1,0 +1,30 @@
+.chatHeader{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $PXL;
+    height: 60px;
+    border-bottom: 2px solid rgba($gray, .3);
+    
+    button{
+        background-color: transparent;
+        color: $black;
+    }
+
+    &__avatar{
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        h4{
+            font-size: $fontBasic;
+        }
+
+        p{
+            font-size: $fontMm;
+            font-weight: 400;
+            color: $gray;
+        }
+    }
+
+}

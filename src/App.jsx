@@ -16,7 +16,7 @@ import Home from './pages/Home'
 import './App.scss'
 import InboxLayout from './pages/Inbox/InboxLayout'
 import Inbox from './pages/Inbox/Inbox'
-import Chat from './pages/Inbox/Chat'
+import ChatLayout from './pages/Inbox/Chat/ChatLayout'
 
 
 const routes = [
@@ -53,7 +53,7 @@ const routes = [
             },
             {
               path: ':conversationId',
-              element: <Chat/>
+              element: <ChatLayout/>
             }
           ]
         }
